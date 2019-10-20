@@ -10,11 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolderClass> {
 
     private String[] data;
-    public AdapterClass(String[] data){
-        this.data=data;
+    private List<Person> personList;
+    public AdapterClass(List<Person> personList){
+        this.personList=personList;
     }
     @NonNull
     @Override
@@ -27,13 +30,13 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolderCl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderClass holder, int position) {
-        String title=data[position];
+        String title= personList.get(position).getName();
         holder.title_tv.setText(title);
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return personList.size();
     }
 
     public class ViewHolderClass extends RecyclerView.ViewHolder{

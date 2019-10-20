@@ -20,11 +20,18 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
 
         String[] languages={"Java","C++","Android","C","Python","C#","JavaScript","HTML","CSS","Java","C++","Android","C","Python","C#","JavaScript","HTML","CSS"};
-        rv.setAdapter(new AdapterClass(languages));
+        //rv.setAdapter(new AdapterClass(languages));
 
         List<Person> personList=new ArrayList<>();
-        personList.add(new Person("Izan","Chittagong"));
+        personList.add(new Person("Aizan","Chittagong"));
         personList.add(new Person("Stepano","Chittagong"));
         personList.add(new Person("Jhon","Chittagong"));
+        personList.add(new Person("Benzamin","Chittagong"));
+        personList.add(new Person("Aizan","Chittagong"));
+        personList.add(new Person("Stepano","Chittagong"));
+        personList.add(new Person("Jhon","Chittagong"));
+        personList.add(new Person("Benzamin","Chittagong"));
+
+        rv.setAdapter(new AdapterClass(personList));
     }
 }
