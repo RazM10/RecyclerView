@@ -1,24 +1,31 @@
-package org.richit.recyclerview;
+package org.richit.recyclerview.Adapters;
 
-import android.text.Layout;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.richit.recyclerview.Activities.DetailsActivity;
+import org.richit.recyclerview.Models.Person;
+import org.richit.recyclerview.R;
 
 import java.util.List;
 
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolderClass> {
 
-    private String[] data;
+    private Context context;
     private List<Person> personList;
 
-    public AdapterClass(List<Person> personList) {
+    public AdapterClass(Context context, List<Person> personList) {
+        this.context = context;
         this.personList = personList;
     }
 
@@ -26,20 +33,21 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolderCl
     @Override
     public ViewHolderClass onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.list_item, parent, false);
         return new ViewHolderClass(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderClass holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderClass holder, final int position) {
         String title = personList.get(position).getName();
         holder.title_tv.setText(title);
 
         holder.linearLayoutParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, DetailsActivity.class);
+                context.startActivity(intent);
             }
         });
     }

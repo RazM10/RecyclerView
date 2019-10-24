@@ -1,4 +1,4 @@
-package org.richit.recyclerview;
+package org.richit.recyclerview.Models;
 
 public class Person {
     String name;
