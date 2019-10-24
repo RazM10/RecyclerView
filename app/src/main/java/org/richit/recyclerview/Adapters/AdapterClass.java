@@ -40,13 +40,14 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolderCl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderClass holder, final int position) {
-        String title = personList.get(position).getName();
+        final String title = personList.get(position).getName();
         holder.title_tv.setText(title);
 
         holder.linearLayoutParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("Munir", title);
                 context.startActivity(intent);
             }
         });
